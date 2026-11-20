@@ -1,24 +1,34 @@
-insert:
-  - id: mcp-mvp-mes
-    name: mcp-mvp-mes
-    config:
-      transport: streamable-http
-      url: "https://mom-mes-connector-t.hdt.cosmoplat.com/mcp"
-      headers:
-        Authorization: "Bearer {{apiKey}}"
-        x-api-base-url: "{{xApiBaseUrl}}"
-    configurable: true
-    configSchema:
-      type: object
-      properties:
-        apiKey:
-          type: string
-          title: "API Key"
-          description: "认证密钥，示例：deecfd29-34da-4504-a745-22d69bf840c7"
-        xApiBaseUrl:
-          type: string
-          title: "x-api-base-url"
-          description: "后端基础地址，示例：https://mom-dev.hdt.cosmoplat.com"
-      required:
-        - apiKey
-        - xApiBaseUrl
+# dsh-plugin-mcp-mvp-mes — bundle layer.
+#
+# Mounts the host's built-in @deepseek-ai/dsh-mcp-client against the MOM MES
+# Streamable HTTP endpoint.
+#
+# The API key is a credential REFERENCE, so no secret is stored in this file.
+# Its current value lives in the harness credential store (or, as a fallback, in
+# the launching environment / .env) and is editable from the Web UI:
+# Plugins -> this bundle -> the form on its page. Saving a value rebuilds the MCP
+# connection in place; no restart is needed.
+#
+# Credential reference consumed here:
+#   MOM_MES_API_KEY   -> Authorization: Bearer <key>
+
+- insert:
+    # The MCP connection itself.
+    - id: mcp-mvp-mes
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: mvpMes
+        transport: streamable-http
+        url: https://mom-mes-connector-t.hdt.cosmoplat.com/mcp
+        headers:
+          Authorization: 'Bearer ${credential:MOM_MES_API_KEY}'
+        # Resolve the ${credential:…} reference at runtime and redact the
+        # resolved value from diagnostics. A missing value leaves the server in
+        # `waiting-credentials` instead of burning reconnect attempts.
+        expandTemplates: true
+        failOnStartupError: false
+
+    # The bundle's own row: it carries the browser half (the configuration form
+    # on the bundle page) and gives the package a Loader entry of its own.
+    - id: mcp-mvp-mes-bundle
+      name: 'dsh-plugin-mcp-mvp-mes'

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "MOM MES connector",
+    "description": "Connects the MOM MES MCP server so its work-order, planning, and inspection tools are available to the agent. The API key is set on this plugin's page and stored in the harness credential store; saving it rebuilds the connection without a restart."
+  }
+}

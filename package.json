@@ -1,13 +1,44 @@
 {
   "name": "dsh-plugin-mcp-mvp-mes",
-  "version": "0.1.0",
-  "description": "MOM MES MCP 连接器，对接 mom-mes-connector-t.hdt.cosmoplat.com",
-  "keywords": ["dsh-plugin", "deepseek-harness", "mcp", "mes", "mom"],
+  "version": "0.2.1",
+  "description": "MOM MES MCP 连接器：通过宿主内置 dsh-mcp-client 对接 mom-mes-connector-t.hdt.cosmoplat.com，API Key 可在插件页直接配置",
+  "keywords": ["dsh-plugin", "deepseek-harness", "mcp", "mes", "mom", "streamable-http"],
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.mjs",
+  "files": [
+    "lib/index.mjs",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "README.md",
+    "icon.svg"
+  ],
+  "exports": {
+    ".": "./lib/index.mjs",
+    "./client": "./client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-plugin-manager"
+      ]
+    }
+  },
   "engines": {
     "dsh": ">=0.1.0-rc.6"
   },
   "dependencies": {},
-  "files": [
-    "cordis.patch.yml"
-  ]
+  "publishConfig": {
+    "access": "public"
+  }
 }
