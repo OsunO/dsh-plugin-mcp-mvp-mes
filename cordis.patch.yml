@@ -1,0 +1,24 @@
+insert:
+  - id: mcp-mvp-mes
+    name: mcp-mvp-mes
+    config:
+      transport: streamable-http
+      url: "https://mom-mes-connector-t.hdt.cosmoplat.com/mcp"
+      headers:
+        Authorization: "Bearer {{apiKey}}"
+        x-api-base-url: "{{xApiBaseUrl}}"
+    configurable: true
+    configSchema:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          title: "API Key"
+          description: "认证密钥，示例：deecfd29-34da-4504-a745-22d69bf840c7"
+        xApiBaseUrl:
+          type: string
+          title: "x-api-base-url"
+          description: "后端基础地址，示例：https://mom-dev.hdt.cosmoplat.com"
+      required:
+        - apiKey
+        - xApiBaseUrl

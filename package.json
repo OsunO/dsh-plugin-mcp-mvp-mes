@@ -1,0 +1,13 @@
+{
+  "name": "dsh-plugin-mcp-mvp-mes",
+  "version": "0.1.0",
+  "description": "MOM MES MCP 连接器，对接 mom-mes-connector-t.hdt.cosmoplat.com",
+  "keywords": ["dsh-plugin", "deepseek-harness", "mcp", "mes", "mom"],
+  "engines": {
+    "dsh": ">=0.1.0-rc.6"
+  },
+  "dependencies": {},
+  "files": [
+    "cordis.patch.yml"
+  ]
+}
