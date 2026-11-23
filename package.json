@@ -1,8 +1,15 @@
 {
   "name": "dsh-plugin-mcp-mvp-mes",
-  "version": "0.2.1",
-  "description": "MOM MES MCP 连接器：通过宿主内置 dsh-mcp-client 对接 mom-mes-connector-t.hdt.cosmoplat.com，API Key 可在插件页直接配置",
-  "keywords": ["dsh-plugin", "deepseek-harness", "mcp", "mes", "mom", "streamable-http"],
+  "version": "0.2.5",
+  "description": "通过 MOM MES 的 MCP 服务，把工单、订单、检验单等查询工具提供给智能体。API Key 在本插件页面上配置，保存在 Harness 凭据库中；保存后连接自动重建，无需重启。",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "mcp",
+    "mes",
+    "mom",
+    "streamable-http"
+  ],
   "license": "MIT",
   "type": "module",
   "main": "lib/index.mjs",
