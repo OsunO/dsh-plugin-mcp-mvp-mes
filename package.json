@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-mcp-mvp-mes",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "通过 MOM MES 的 MCP 服务，把工单、订单、检验单等查询工具提供给智能体。API Key 在本插件页面上配置，保存在 Harness 凭据库中；保存后连接自动重建，无需重启。",
   "keywords": [
     "dsh-plugin",
