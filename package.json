@@ -11,6 +11,14 @@
     "streamable-http"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OsunO/dsh-plugin-mcp-mvp-mes.git"
+  },
+  "homepage": "https://www.npmjs.com/package/dsh-plugin-mcp-mvp-mes",
+  "bugs": {
+    "url": "https://github.com/OsunO/dsh-plugin-mcp-mvp-mes/issues"
+  },
   "type": "module",
   "main": "lib/index.mjs",
   "files": [
